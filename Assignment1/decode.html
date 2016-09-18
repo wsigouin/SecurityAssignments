@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Will's Decrypter </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+
+    <script src= "js/jquery-3.1.0.min.js"></script>
+    <script src= "js/bootstrap.min.js"></script>
+    <script src= "js/functions.js"></script>
+
+    <script src= "js/aes.js"></script>
+    <script src= "js/tripledes.js"></script>
+    <script src= "js/rabbit.js"></script>
+    <script src= "js/rc4.js"></script>
+    <script src= "js/Blowfish.js"></script>
+    <script src= "js/enc-base64.js"></script>
+  </head>
+  <body>
+    <form name ="form" class="form-horizontal">
+    <fieldset>
+
+    <ul>
+      <li><a href="default.asp">Home</a></li>
+      <li><a href="index.html">Encrypt</a></li>
+    </ul> <br>
+    <!-- text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textInput">Input</label>
+      <div class="col-md-4">
+      <input id="textInput" name="textInput" type="text" placeholder="" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <!--Key input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="keyInput">Key</label>
+      <div class="col-md-4">
+        <input id="keyInput" name="keyInput" type="password" placeholder="" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <!-- Encryption Type -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="cipherType">Cipher</label>
+      <div class="col-md-4">
+        <select id="cipherType" name="cipherType" class="form-control">
+          <option value="1">AES</option>
+          <option value="2">Triple DES</option>
+          <option value="3">Rabbit</option>
+          <option value="4">RC4</option>
+          <option value="5">Blowfish</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- Submit that shit -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit"></label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" onclick = "return decrypt()" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
+    <!-- output -->
+    <div class="output">
+      <label class="col-md-4 control-label" for="output"></label>
+      <div class="col-md-4">
+        <p id="output" name="output"></p>
+      </div>
+    </div>
+
+    </fieldset>
+    </form>
+  </body>
+</html>
