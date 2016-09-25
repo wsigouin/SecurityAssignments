@@ -1,3 +1,7 @@
+<?php
+  session_destroy();
+  session_start(); 
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,23 +21,23 @@
     <script src= "js/enc-base64.js"></script>
   </head>
   <body>
-    <form name ="loginForm" class="form-horizontal" action = "test.php" method = "POST">
+    <form name ="loginForm" class="form-horizontal" action = "php/login.php" method = "POST">
     <fieldset>
 
     <ul>
-      <li><a href="default.asp">Home</a></li>
-      <li><a href="register.html">Register</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="registerPage.php">Register</a></li>
     </ul> <br>
     <!-- Plaintext input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textInput">Username:</label>
+      <label class="col-md-4 control-label" for="userInput">Username:</label>
       <div class="col-md-4">
       <input id="userInput" name="userInput" type="text" placeholder="" class="form-control input-md" required="">
 
       </div>
     </div>
 
-    <!--Key input-->
+    <!--Pasword input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordInput">Password:</label>
       <div class="col-md-4">
@@ -41,7 +45,10 @@
 
       </div>
     </div>
-
+    <div>
+      <label class="col-md-4 control-label" for="forgotPW"></label>
+      <a href="recoverPage.php" name = "forgotPW"> Forgot Password?</a> <br> <br>
+    </div>
     <!-- Submit that shit -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="submit"></label>
@@ -50,13 +57,6 @@
       </div>
     </div>
 
-    <!-- output -->
-    <div class="output">
-      <label class="col-md-4 control-label" for="output"></label>
-      <div class="col-md-4">
-        <p id="output" name="output"></p>
-      </div>
-    </div>
 
     </fieldset>
     </form>

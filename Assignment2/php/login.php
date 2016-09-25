@@ -1,8 +1,10 @@
 <?php
-    $user =  $_POST["userInput"];
-  	$pw = $_POST["passwordInput"];
+  session_start();
+  $user =  $_POST["userInput"];
+  $pw = $_POST["passwordInput"];
+  $pw = crypt($pw, '$6$rounds=5000$banana$');
 
-	$servername = "localhost";
+  $servername = "localhost";
 	$username = "root";
 	$password = "Acc0unt$2";
 	$dbname = "login_information";
@@ -17,12 +19,13 @@
 
 	$sql = "SELECT * FROM user_info WHERE username = '$user' AND passHash = '$pw'";
 	$result = $conn->query($sql);
-	echo "hello";
 
 	if ($result->num_rows == 1) {
-   	echo "Logged In!!";
+    $_SESSION["Message"] = "Logged In!";
+    header("Location: ../message.php");
 	} else {
-    		echo "Get Outta HERE";
+    		$_SESSION["Message"] = "Error loggin in try again!";
+        header("Location: ../message.php");
 	}
 	$conn->close();
 
