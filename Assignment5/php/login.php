@@ -3,12 +3,15 @@
   $user =  $_POST["userInput"];
   $pw = $_POST["passwordInput"];
   $pw = crypt($pw, '$6$rounds=5000$banana$');
+  $ip = $_SERVER['REMOTE_ADDR'];
 
   $servername = "localhost";
 	$username = "root";
 	$password = "Acc0unt$2";
 	$dbname = "login_information";
 
+  $log = 'log.txt';
+  $record = $user ." ". date('Y-m-d') ." ". time() ." ". $ip;
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -25,10 +28,13 @@
     $row = $result->fetch_assoc();
     $_SESSION['acl'] = $row['acl'];
     header("Location: ../main.php");
+    $record = $record ." 1\n";
 	} else {
     		$_SESSION["Message"] = "Error loggin in try again!";
         header("Location: ../regMessage.php");
+        $record = $record ." 0\n";
 	}
+  file_put_contents($log, $record, FILE_APPEND);
 	$conn->close();
 
  ?>

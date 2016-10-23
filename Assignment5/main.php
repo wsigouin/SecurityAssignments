@@ -40,6 +40,12 @@ else{
       <label class="col-md-4 control-label" for="output"></label>
       <div class="col-md-4">
         <p id="output" name="output"><?php echo "Welcome: " . $_SESSION["username"]; ?></p>
+        <?php
+          if($_SESSION['acl'] >= 3){
+            echo '<a href="php/log.txt" download>Click here to download latest log</a>';
+          }
+        ?>
+
       </div>
     </div>
 
